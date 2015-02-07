@@ -11,6 +11,10 @@
         "48": "./assets/img/icon.png"
     },
     "permissions": [
+       "clipboardWrite",
+        "clipboardRead",
+        "declarativeContent",
+        "activeTab",
         "tabs",
         "unlimitedStorage",
         "http://*/*",

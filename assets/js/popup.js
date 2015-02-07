@@ -2,6 +2,13 @@
  * Author: SharkIng. Feb. 6, 2015
  */
 
+/*
+* Default Setting
+*/
+// Use Whatever YOURLS system
+var siteName = 'http://xna.me';
+
+// Programming
 var $xlink = $('#xlink');
 
 init();
@@ -16,19 +23,30 @@ function init(){
         }
     });
 
-    $('.btn-save').click(function (e) {
+    /*
+    * Copy Button
+    */
+    $('.btn-copy').click(function (e) {
         e.preventDefault();
-        save();
+        copy();
+    });
 
+    /*
+    * QR Code Button
+    */
+    // This will Open a new window/tab
+    $('.btn-qr').click(function (e) {
+        e.preventDefault();
+        getQRCode(); // Use Default YOURLS Plugin
     });
 
 }
 
+/*
+* Main Function that Shorten URL link by Using YOURLS API
+*/
 function ShortenLink (url) {
     var yourlsLink;
-
-    // Use Whatever YOURLS system
-    var siteName = 'http://xna.me';
 
     // Get Yourls API from XNa.me
     // You can use your own API as well
@@ -44,4 +62,32 @@ function ShortenLink (url) {
     rqst.open("GET", yourlsLink, false);
     rqst.send();
 
+}
+
+/*
+* Get QRCode Function
+*/
+function getQRCode(){
+    var link= document.getElementById('xlink').value;
+    window.open(link + '.qr','Links QR Code');
+}
+
+/*
+* Copy function
+*/
+function copy(){
+    var link= document.getElementById('xlink').value;
+    copyTextToClipboard(link);
+}
+
+/*
+* Copy to Clipboard
+*/
+function copyTextToClipboard(text) {
+    var copyFrom = $('<textarea/>');
+    copyFrom.text(text);
+    $('body').append(copyFrom);
+    copyFrom.select();
+    document.execCommand('copy');
+    copyFrom.remove();
 }
