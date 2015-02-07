@@ -1,0 +1,19 @@
+﻿{
+    "name": "XName for Chrome Extension",
+    "version": "0.1",
+    "manifest_version": 2,
+    "description": "Google Chrome quick link shortening addon for XNa.me",
+    "browser_action": {
+        "default_icon": "./assets/img/icon.png",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "48": "./assets/img/icon.png"
+    },
+    "permissions": [
+        "tabs",
+        "unlimitedStorage",
+        "http://*/*",
+        "https://*/*"
+    ]
+}
